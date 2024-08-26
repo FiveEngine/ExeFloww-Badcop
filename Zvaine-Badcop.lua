@@ -1,18 +1,18 @@
-local ZvaineFramework = "qbcore" -- "qbcore", "QBX", "esx", "ndcore" Altyapın Hangisi İse
+local ExeFlowwFramework = "qbcore" -- "qbcore", "QBX", "esx", "ndcore" Altyapın Hangisi İse
 
 local Core
 local framework
 
-if ZvaineFramework == "qbcore" then
+if ExeFlowwFramework == "qbcore" then
     Core = exports['qb-core']:GetCoreObject()
     framework = 'qb'
-elseif ZvaineFramework == "QBX" then
+elseif ExeFlowwFramework == "QBX" then
     Core = exports['qbx_core']:GetCoreObject()
     framework = 'QBX'
-elseif ZvaineFramework == "esx" then
+elseif ExeFlowwFramework == "esx" then
     TriggerEvent('esx:getSharedObject', function(obj) Core = obj end)
     framework = 'esx'
-elseif ZvaineFramework == "ndcore" then
+elseif ExeFlowwFramework == "ndcore" then
     Core = exports['nd-core']:GetCoreObject()
     framework = 'nd'
 else
@@ -30,14 +30,14 @@ RegisterNetEvent(framework == 'esx' and 'esx:setJob' or 'QBCore:Client:OnJobUpda
     isPlayerWhitelisted = PlayerWhitelisted()
 end)
 
-ZvaineSilahlar = {
+ExeFlowwFrameworkSilahlar = {
     "weapon_pistol",
     "weapon_smg",
     "weapon_stungun",
     "weapon_nightstick"
 }
 
-ZvaineMeslekler = {
+ExeFlowwFrameworkMeslekler = {
     "police"
 }
 
@@ -46,11 +46,11 @@ CreateThread(function()
         Wait(2000)
         local player = PlayerPedId()
         if not isPlayerWhitelisted then
-            for k,v in pairs(ZvaineSilahlar) do
+            for k,v in pairs(ExeFlowwFrameworkSilahlar) do
                 local weapon = GetHashKey(v)
                 if HasPedGotWeapon(player, weapon, false) then
                     RemoveWeaponFromPed(player, weapon)
-                    TriggerServerEvent("Zvaine:antibadcop:server:RemoveItem", v, 1)
+                    TriggerServerEvent("ExeFlowwFramework:antibadcop:server:RemoveItem", v, 1)
                     TriggerEvent("inventory:client:ItemBox", Core.Shared.Items[v], "remove", 1) 
                 end
             end
@@ -59,7 +59,7 @@ CreateThread(function()
 end)
 
 function PlayerWhitelisted()
-    for k,v in ipairs(ZvaineMeslekler) do
+    for k,v in ipairs(ExeFlowwFrameworkMeslekler) do
         if v == PlayerData.job.name then
             return true
         end
