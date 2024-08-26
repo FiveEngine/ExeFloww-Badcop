@@ -1,4 +1,4 @@
-local ExeFlowwFramework = "qbcore" -- "qbcore", "QBX", "esx", "ndcore" Altyapın Hangisi İse
+local ExeFlowwFramework = "QBX" -- "qbcore", "QBX", "esx", "ndcore" Altyapın Hangisi İse
 
 local Core
 local framework
